@@ -17,7 +17,7 @@ class Profile(models.Model):
     food_pref = models.CharField(max_length=20)
     occupation = models.CharField(max_length=30)
     organisation = models.CharField(max_length=50)
-    about_me = models.CharField(max_length=500)
+    about_me = models.models.TextField()
     nationality = models.CharField(max_length=30)
     languages = models.CharField(max_length=100)
     roommate_gender_pref = models.CharField(max_length=20)
