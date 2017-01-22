@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
 	url(r'^clubs/', include('clubs.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^roomie', include('roommate_finder.urls'))
 ]
