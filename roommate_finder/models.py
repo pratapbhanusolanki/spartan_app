@@ -15,7 +15,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     age = models.IntegerField()
     gender = models.CharField(max_length=20)
-    location = LocationField(based_fields=['city'], zoom=7, default=Point(1.0, 1.0))
+    #location = LocationField(based_fields=['city'], zoom=7, default=Point(1.0, 1.0))
     objects = models.GeoManager()
     food_pref = models.CharField(max_length=20)
     occupation = models.CharField(max_length=30)
