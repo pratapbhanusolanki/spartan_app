@@ -25,7 +25,7 @@ SECRET_KEY = 'kgp&ol^7&n#01mcz$lhg+7n&rs9^-vhu(hgkzpvlo65w=fkom&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
     'roommate_finder.apps.RoommateFinderConfig',
-    'community.apps.CommunityConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +53,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'spartan_app.urls'
 
-SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
+SPATIALITE_LIBRARY_PATH='/usr/local/lib/mod_spatialite.dylib'
+#SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
 
 TEMPLATES = [
     {
