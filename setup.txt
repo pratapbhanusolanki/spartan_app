@@ -1,0 +1,19 @@
+1. Install anaconda
+2. Install django
+    conda install django
+
+3. Install spatialite
+    https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/spatialite/
+
+4. In case of spatialite related errors, follow
+    http://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-to-fix-this-error
+    Specifically:
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        sudo apt-get update
+        sudo apt-get upgrade
+        sudo apt-get dist-upgrade
+
+    Followed by:
+        conda install libgcc
+        sudo apt-get install libsqlite3-dev
+        pip install pysqlite
