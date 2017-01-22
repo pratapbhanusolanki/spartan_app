@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
-    'roommate_finder.apps.RoommateFinderConfig'
+    'roommate_finder.apps.RoommateFinderConfig',
+    'community.apps.CommunityConfig',
 ]
 
 MIDDLEWARE = [

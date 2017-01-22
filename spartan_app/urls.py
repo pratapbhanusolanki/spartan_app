@@ -17,7 +17,7 @@ from django.conf.urls import include,url
 from django.contrib import admin
 
 urlpatterns = [
-	url(r'^clubs/', include('clubs.urls')),
+	#url(r'^communities/', include('communities.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^roomie', include('roommate_finder.urls'))
 ]
