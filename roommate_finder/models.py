@@ -2,9 +2,12 @@ from __future__ import unicode_literals
 
 # from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import admin
 from location_field.models.spatial import LocationField
 from django.contrib.gis.geos import Point
 from django.contrib.gis.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 # Create your models here.
 
@@ -33,7 +36,13 @@ class FeatureMap(models.Model):
     acc_score = models.FloatField()
 
 class Question(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=500)
+
+class Option(models.Model):
+    name = models.CharField(max_length=500)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    value = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
+
 
 class Answer(models.Model):
     user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
