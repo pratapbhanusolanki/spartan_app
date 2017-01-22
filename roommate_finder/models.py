@@ -17,24 +17,37 @@ class Profile(models.Model):
     food_pref = models.CharField(max_length=20)
     occupation = models.CharField(max_length=30)
     organisation = models.CharField(max_length=50)
-    about_me = models.CharField(max_length=500)
+    about_me = models.TextField()
     nationality = models.CharField(max_length=30)
     languages = models.CharField(max_length=100)
     roommate_gender_pref = models.CharField(max_length=20)
     interests = models.CharField(max_length=100)
     photo = models.ImageField(width_field=32, height_field=32)
 
-class Questions(models.Model):
-    question = models.CharField(max_length=100)
+class Feature(models.Model):
+    name = models.CharField(max_length=100)
 
-class Scores(models.Model):
-    user_id = models.IntegerField()
-    question_id = models.IntegerField()
-    score = models.IntegerField()
+class FeatureMap(models.Model):
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    acc_score = models.FloatField()
 
-class Review_Submissions(models.Model):
-    scorer_id = models.IntegerField()
-    user_id = models.IntegerField()
-    relationship = models.CharField(max_length=20)
+class Question(models.Model):
+    name = models.CharField(max_length=200)
+
+class Answer(models.Model):
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    score = models.FloatField()
+    is_self = models.BooleanField()
+    feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+
+class PeerReview(models.Model):
+    scorer_id = models.ForeignKey(Profile, related_name='by',on_delete=models.CASCADE)
+    user_id = models.ForeignKey(Profile, related_name='of',on_delete=models.CASCADE)
+    is_roommate = models.BooleanField()
     date_time = models.DateTimeField(auto_now=True)
-    models.FloatField
+
+class SelfReview(models.Model):
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(auto_now=True)
