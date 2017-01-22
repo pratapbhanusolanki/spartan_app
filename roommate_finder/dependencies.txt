@@ -1,6 +1,0 @@
-https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/spatialite/
-
-http://askubuntu.com/questions/575505/glibcxx-3-4-20-not-found-how-to-fix-this-error
-
-sudo apt-get install libsqlite3-dev
-pip install pysqlite

@@ -33,6 +33,7 @@ class Feature(models.Model):
 class FeatureMap(models.Model):
     user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
     feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    acc_score = models.FloatField()
 
 class Question(models.Model):
     name = models.CharField(max_length=500)
