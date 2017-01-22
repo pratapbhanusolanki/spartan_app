@@ -24,16 +24,29 @@ class Profile(models.Model):
     interests = models.CharField(max_length=100)
     photo = models.ImageField(width_field=32, height_field=32)
 
-class Questions(models.Model):
-    question = models.CharField(max_length=100)
+class Feature(models.model)
+    name = models.CharField(max_length=100)
 
-class Scores(models.Model):
-    user_id = models.IntegerField()
-    question_id = models.IntegerField()
-    score = models.IntegerField()
+class FeatureMap(models.model)
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    
+class Question(models.Model):
+    name = models.CharField(max_length=200)
 
-class Review_Submissions(models.Model):
-    scorer_id = models.IntegerField()
-    user_id = models.IntegerField()
-    relationship = models.CharField(max_length=20)
+class Answer(models.Model):
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+    score = models.FloatField()
+    is_self = models.BooleanField()
+    feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+
+class PeerReview(models.Model):
+    scorer_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    is_roommate = models.BooleanField()
+    date_time = models.DateTimeField(auto_now=True)
+
+class SelfReview(models.Model):
+    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
     date_time = models.DateTimeField(auto_now=True)
