@@ -1,0 +1,9 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+   {% for c in content %}
+      <p>{{c}}</p>
+   {% endfor %}
+   <br>
+   <li><a href='/questionaire/'>Questionaire</a></li>
+{% endblock %}
