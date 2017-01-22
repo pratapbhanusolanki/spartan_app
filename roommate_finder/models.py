@@ -17,20 +17,20 @@ class Profile(models.Model):
     food_pref = models.CharField(max_length=20)
     occupation = models.CharField(max_length=30)
     organisation = models.CharField(max_length=50)
-    about_me = models.models.TextField()
+    about_me = models.TextField()
     nationality = models.CharField(max_length=30)
     languages = models.CharField(max_length=100)
     roommate_gender_pref = models.CharField(max_length=20)
     interests = models.CharField(max_length=100)
     photo = models.ImageField(width_field=32, height_field=32)
 
-class Feature(models.model)
+class Feature(models.Model):
     name = models.CharField(max_length=100)
 
-class FeatureMap(models.model)
+class FeatureMap(models.Model):
     user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
     feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
-    
+
 class Question(models.Model):
     name = models.CharField(max_length=200)
 
@@ -42,8 +42,8 @@ class Answer(models.Model):
     feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
 
 class PeerReview(models.Model):
-    scorer_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    scorer_id = models.ForeignKey(Profile, related_name='by',on_delete=models.CASCADE)
+    user_id = models.ForeignKey(Profile, related_name='of',on_delete=models.CASCADE)
     is_roommate = models.BooleanField()
     date_time = models.DateTimeField(auto_now=True)
 
