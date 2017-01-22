@@ -37,12 +37,12 @@ class FeatureMap(models.Model):
 
 class Question(models.Model):
     name = models.CharField(max_length=500)
+    feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
 
 class Option(models.Model):
     name = models.CharField(max_length=500)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     value = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
-
 
 class Answer(models.Model):
     user_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
