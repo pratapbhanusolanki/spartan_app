@@ -38,6 +38,7 @@ class FeatureMap(models.Model):
 class Question(models.Model):
     name = models.CharField(max_length=500)
     feature_id = models.ForeignKey(Feature, on_delete=models.CASCADE)
+    is_self = models.BooleanField()
 
 class Option(models.Model):
     name = models.CharField(max_length=500)
