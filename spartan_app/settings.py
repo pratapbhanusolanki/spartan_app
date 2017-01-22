@@ -54,6 +54,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'spartan_app.urls'
 
+SPATIALITE_LIBRARY_PATH = 'mod_spatialite'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
