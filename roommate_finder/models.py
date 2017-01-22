@@ -37,3 +37,4 @@ class Review_Submissions(models.Model):
     user_id = models.IntegerField()
     relationship = models.CharField(max_length=20)
     date_time = models.DateTimeField(auto_now=True)
+    models.FloatField
